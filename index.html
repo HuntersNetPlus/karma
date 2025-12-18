@@ -117,20 +117,26 @@
 .service-card {
   display: flex;
   flex-direction: column;
-  align-items: center;       /* горизонтальное центрирование */
-  justify-content: center;   /* вертикальное центрирование */
-  text-align: center;        /* текст тоже по центру */
   padding: 20px;
+  border-radius: 10px;
+  text-align: left; /* текст по ширине */
+  gap: 12px;
 }
-    
-    .service-card h3{
-      font-size:12px;
-      margin-bottom:6px;
-    }
-    .service-card p{
-      font-size:10px;
-      line-height:1.4;
-    }
+
+/* контейнер для иконки и заголовка */
+.service-card h3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* иконка + заголовок по центру */
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+/* описание текста растягивается на всю ширину */
+.service-card p {
+  font-size: 12px;
+  line-height: 1.4;
+}
     .service-card .for-who{
       font-size:9px;
       color:var(--muted);
