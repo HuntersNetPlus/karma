@@ -17,34 +17,39 @@
     }
 
     *{box-sizing:border-box}
-  body {
+ body {
   margin: 0;
   font-family: -apple-system,BlinkMacSystemFont,Inter,system-ui,sans-serif;
   color: var(--text);
   overflow-x: hidden;
 
-  /* базовый фон с градиентами */
   background:
     radial-gradient(600px 600px at 10% 10%, var(--bg1), transparent 60%),
     radial-gradient(700px 700px at 90% 20%, var(--bg2), transparent 60%),
     radial-gradient(800px 800px at 50% 90%, var(--bg3), transparent 60%),
     #0b0b10;
-  background-size: 200% 200%; /* увеличиваем размер для анимации */
-  animation: bgMove 30s ease-in-out infinite alternate;
+  background-size: 200% 200%;
+  animation: bgMove 40s ease-in-out infinite;
 }
 
-/* ключевые кадры движения */
 @keyframes bgMove {
   0% {
-    background-position: 0% 0%, 100% 20%, 50% 90%, 0 0;
+    background-position: 5% 10%, 95% 15%, 50% 90%, 0 0;
+  }
+  25% {
+    background-position: 15% 20%, 90% 25%, 55% 80%, 0 0;
   }
   50% {
-    background-position: 10% 10%, 90% 25%, 55% 85%, 0 0;
+    background-position: 10% 5%, 85% 30%, 45% 95%, 0 0;
+  }
+  75% {
+    background-position: 20% 15%, 92% 18%, 50% 85%, 0 0;
   }
   100% {
-    background-position: 0% 0%, 100% 20%, 50% 90%, 0 0;
+    background-position: 5% 10%, 95% 15%, 50% 90%, 0 0;
   }
 }
+
 
     h1,h2,h3,p{margin:0; line-height:1.35}
     h2{font-size:20px}
