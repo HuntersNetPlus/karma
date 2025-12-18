@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Бизнес-тренер</title>
+  <title>Кармолог-нумеролог</title>
   <style>
     /* MOBILE FIRST */
     :root{
-      --bg1:#ff6ec4;
-      --bg2:#7873f5;
-      --bg3:#4ade80;
+      --bg1:#9333ea;
+      --bg2:#ec4899;
+      --bg3:#3b82f6;
       --glass:rgba(255,255,255,0.18);
       --border:rgba(255,255,255,0.35);
       --text:#ffffff;
@@ -30,10 +30,10 @@
     }
 
     h1,h2,h3,p{margin:0; line-height:1.35}
-h2{font-size:20px}
-h3{font-size:16px}
-p{font-size:14px}
-.muted{font-size:13px}
+    h2{font-size:20px}
+    h3{font-size:16px}
+    p{font-size:14px}
+    .muted{font-size:13px}
     section{padding:20px 16px}
 
     /* glass */
@@ -59,6 +59,7 @@ p{font-size:14px}
       width:100%;
       border-radius:20px;
       object-fit:cover;
+      max-height:250px;
     }
 
     /* grids */
@@ -79,37 +80,8 @@ p{font-size:14px}
       gap:8px;
     }
 
-    /* dashboard */
-    .chart{
-      height:80px;
-      border-radius:12px;
-      background:linear-gradient(120deg, rgba(255,255,255,.6), rgba(255,255,255,0));
-      position:relative;
-      overflow:hidden;
-    }
-    .chart::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(90deg, transparent, rgba(255,255,255,.6), transparent);
-      transform:translateX(-100%);
-    }
-    .chart.animate::after{
-      animation:load 1.6s ease forwards;
-    }
-    @keyframes load{
-      to{transform:translateX(100%)}
-    }
-
     /* price */
     .price{font-size:22px; font-weight:600}
-
-    /* contacts */
-    .contacts{
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-    }
 
     /* mobile overflow rows */
     .grid-3,.grid-4{
@@ -122,6 +94,45 @@ p{font-size:14px}
     }
     .grid-2 > div{min-width:100%}
 
+    /* reviews slider */
+    .reviews-container{
+      position:relative;
+      overflow:hidden;
+      padding:20px;
+    }
+    .reviews-track{
+      display:flex;
+      gap:16px;
+      transition:transform 0.6s ease;
+    }
+    .review-card{
+      min-width:280px;
+      flex-shrink:0;
+    }
+    .review-dots{
+      display:flex;
+      justify-content:center;
+      gap:8px;
+      margin-top:16px;
+    }
+    .dot{
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:rgba(255,255,255,0.3);
+      cursor:pointer;
+      transition:.3s;
+    }
+    .dot.active{
+      background:rgba(255,255,255,0.9);
+      width:24px;
+      border-radius:4px;
+    }
+
+    @media(max-width:640px){
+      .review-card{min-width:calc(100% - 40px)}
+    }
+
   </style>
 </head>
 <body>
@@ -130,46 +141,58 @@ p{font-size:14px}
 <section class="about reveal">
   <div class="grid-2">
     <div class="glass card">
-      <h2>Алексей Иванов</h2>
-      <p class="muted">Бизнес-тренер · рост, стратегия, управление</p>
-      <p>Помогаю предпринимателям наводить порядок в бизнесе и расти системно.</p>
+      <h2>Елена Светлова</h2>
+      <p class="muted">Кармолог · регрессолог · нумеролог</p>
+      <p>Помогаю людям понять свой путь, найти ответы на важные вопросы и освободиться от кармических блоков.</p>
     </div>
     <div class="glass card">
-      <img src="https://via.placeholder.com/600x400" alt="Фото">
+      <img src="https://via.placeholder.com/600x400/9333ea/ffffff?text=✨" alt="Фото">
     </div>
   </div>
 </section>
 
-<!-- PROBLEMS -->
+<!-- SERVICES -->
 <section class="reveal">
   <div class="grid-3">
-    <div class="glass card"><h3>Хаос в процессах</h3><p>Наводим структуру</p></div>
-    <div class="glass card"><h3>Нет роста</h3><p>Находим точки масштабирования</p></div>
-    <div class="glass card"><h3>Слабая команда</h3><p>Управление и KPI</p></div>
+    <div class="glass card"><h3>🔮 Кармическая диагностика</h3><p>Раскрываем прошлые жизни</p></div>
+    <div class="glass card"><h3>⏮️ Регрессия</h3><p>Проработка глубинных травм</p></div>
+    <div class="glass card"><h3>🔢 Нумерология</h3><p>Матрица судьбы и прогнозы</p></div>
   </div>
 </section>
 
-<!-- FEEDBACK -->
+<!-- FEEDBACK SLIDER -->
 <section class="reveal">
-  <div class="grid-3" id="reviews">
-    <div class="glass card"><strong>Анна</strong><p>Помог структурировать бизнес и вырасти за 3 месяца</p></div>
-    <div class="glass card"><strong>Игорь</strong><p>Появилось понимание цифр и точек роста</p></div>
-    <div class="glass card"><strong>Мария</strong><p>Команда стала управляемой и предсказуемой</p></div>
-    <div<!-- PRICES -->
+  <div class="glass reviews-container">
+    <h3 style="text-align:center; margin-bottom:12px">Отзывы клиентов</h3>
+    <div class="reviews-track" id="reviewsTrack">
+      <div class="card review-card" style="background:rgba(255,255,255,0.1); border-radius:16px">
+        <strong>Анна, 34 года</strong>
+        <p>После сеанса регрессии я наконец поняла причины своих страхов. Елена очень деликатно провела меня через процесс. Благодарю! 🙏</p>
+      </div>
+      <div class="card review-card" style="background:rgba(255,255,255,0.1); border-radius:16px">
+        <strong>Игорь, 41 год</strong>
+        <p>Нумерологический разбор показал мои сильные стороны и точки роста. Теперь понимаю, почему в жизни происходили те или иные события.</p>
+      </div>
+      <div class="card review-card" style="background:rgba(255,255,255,0.1); border-radius:16px">
+        <strong>Мария, 28 лет</strong>
+        <p>Кармическая диагностика помогла мне разобраться в отношениях с мамой. Столько лет носила обиду, а теперь чувствую освобождение ✨</p>
+      </div>
+      <div class="card review-card" style="background:rgba(255,255,255,0.1); border-radius:16px">
+        <strong>Дмитрий, 45 лет</strong>
+        <p>Скептически относился к эзотерике, но решил попробовать. Сеанс открыл глаза на многие вещи. Рекомендую!</p>
+      </div>
+    </div>
+    <div class="review-dots" id="reviewDots"></div>
+  </div>
+</section>
+
+<!-- PRICES -->
 <section class="reveal">
   <div class="grid-2">
-    <div class="glass card"><h3>Старт</h3><div class="price">₽25k</div><p>Диагностика · план роста</p></div>
-    <div class="glass card"><h3>Рост</h3><div class="price">₽60k</div><p>2 месяца · KPI · команда</p></div>
-    <div class="glass card"><h3>Про</h3><div class="price">₽90k</div><p>Стратегия · метрики</p></div>
-    <div class="glass card"><h3>Ментор</h3><div class="price">₽120k</div><p>Лично · еженедельно</p></div>
-  </div>
-</section>
-
-<!-- CONTACTS -->h3>Ментор</h3><div class="price">₽120k</div><p>Лично · еженедельно</p></div>
-  </div><p>Диагностика · план роста</p></div>
-    <div class="glass card"><h3>Рост</h3><div class="price">₽60k</div><p>2 месяца · KPI · команда</p></div>
-    <div class="glass card"><h3>Про</h3><div class="price">₽90k</div><p>Стратегия · метрики</p></div>
-    <div class="glass card"><h3>Ментор</h3><div class="price">₽120k</div><p>Лично · еженедельно</p></div>
+    <div class="glass card"><h3>Консультация</h3><div class="price">₽3 500</div><p>1 час · разбор ситуации</p></div>
+    <div class="glass card"><h3>Регрессия</h3><div class="price">₽7 000</div><p>2 часа · глубинная работа</p></div>
+    <div class="glass card"><h3>Матрица судьбы</h3><div class="price">₽5 000</div><p>Полный разбор + рекомендации</p></div>
+    <div class="glass card"><h3>Пакет "Трансформация"</h3><div class="price">₽18 000</div><p>3 сеанса · комплексно</p></div>
   </div>
 </section>
 
@@ -178,28 +201,105 @@ p{font-size:14px}
   <div class="glass card" style="align-items:center; gap:12px">
     <h3>Как со мной связаться</h3>
     <div class="grid-4">
-      <a class="glass card" style="aspect-ratio:1/1; align-items:center; justify-content:center" href="#">📸</a>
-      <a class="glass card" style="aspect-ratio:1/1; align-items:center; justify-content:center" href="#">✈️</a>
-      <a class="glass card" style="aspect-ratio:1/1; align-items:center; justify-content:center" href="#">📞</a>
-      <a class="glass card" style="aspect-ratio:1/1; align-items:center; justify-content:center" href="#">✉️</a>
+      <a class="glass card" style="aspect-ratio:1/1; align-items:center; justify-content:center; text-decoration:none; font-size:24px" href="#">📸</a>
+      <a class="glass card" style="aspect-ratio:1/1; align-items:center; justify-content:center; text-decoration:none; font-size:24px" href="#">✈️</a>
+      <a class="glass card" style="aspect-ratio:1/1; align-items:center; justify-content:center; text-decoration:none; font-size:24px" href="#">📞</a>
+      <a class="glass card" style="aspect-ratio:1/1; align-items:center; justify-content:center; text-decoration:none; font-size:24px" href="#">✉️</a>
     </div>
   </div>
 </section>
 
 <script>
+  // Reveal animation
   const items=document.querySelectorAll('.reveal');
   const io=new IntersectionObserver(entries=>{
     entries.forEach(entry=>{
       if(entry.isIntersecting){
         entry.target.classList.add('show');
-        entry.target.querySelectorAll('.chart').forEach(chart=>{
-          const delay=chart.dataset.delay||0;
-          setTimeout(()=>chart.classList.add('animate'),delay);
-        });
       }
     });
   },{threshold:0.4});
   items.forEach(el=>io.observe(el));
+
+  // Reviews auto-slider
+  const track = document.getElementById('reviewsTrack');
+  const dotsContainer = document.getElementById('reviewDots');
+  const reviews = track.querySelectorAll('.review-card');
+  let currentIndex = 0;
+  let autoSlideInterval;
+
+  // Create dots
+  reviews.forEach((_, i) => {
+    const dot = document.createElement('div');
+    dot.className = 'dot';
+    if (i === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => goToSlide(i));
+    dotsContainer.appendChild(dot);
+  });
+
+  const dots = dotsContainer.querySelectorAll('.dot');
+
+  function goToSlide(index) {
+    currentIndex = index;
+    const cardWidth = reviews[0].offsetWidth;
+    const gap = 16;
+    track.style.transform = `translateX(-${(cardWidth + gap) * currentIndex}px)`;
+    
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === currentIndex);
+    });
+  }
+
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % reviews.length;
+    goToSlide(currentIndex);
+  }
+
+  function startAutoSlide() {
+    autoSlideInterval = setInterval(nextSlide, 4000);
+  }
+
+  function stopAutoSlide() {
+    clearInterval(autoSlideInterval);
+  }
+
+  // Start auto-slide
+  startAutoSlide();
+
+  // Pause on hover
+  track.addEventListener('mouseenter', stopAutoSlide);
+  track.addEventListener('mouseleave', startAutoSlide);
+
+  // Touch support
+  let startX = 0;
+  let currentX = 0;
+  let isDragging = false;
+
+  track.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+    isDragging = true;
+    stopAutoSlide();
+  });
+
+  track.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    currentX = e.touches[0].clientX;
+  });
+
+  track.addEventListener('touchend', () => {
+    if (!isDragging) return;
+    const diff = startX - currentX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0 && currentIndex < reviews.length - 1) {
+        currentIndex++;
+      } else if (diff < 0 && currentIndex > 0) {
+        currentIndex--;
+      }
+      goToSlide(currentIndex);
+    }
+    isDragging = false;
+    startAutoSlide();
+  });
 </script>
 
 </body>
