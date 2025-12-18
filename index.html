@@ -29,8 +29,12 @@
       overflow-x:hidden;
     }
 
-    h1,h2,h3,p{margin:0}
-    section{padding:48px 16px}
+    h1,h2,h3,p{margin:0; line-height:1.35}
+h2{font-size:20px}
+h3{font-size:16px}
+p{font-size:14px}
+.muted{font-size:13px}
+    section{padding:20px 16px}
 
     /* glass */
     .glass{
@@ -60,7 +64,7 @@
     /* grids */
     .grid-3, .grid-2, .grid-4{
       display:grid;
-      gap:16px;
+      gap:12px;
     }
     .grid-3{grid-template-columns:repeat(3,1fr)}
     .grid-2{grid-template-columns:repeat(2,1fr)}
@@ -68,11 +72,11 @@
 
     /* cards */
     .card{
-      padding:16px;
-      min-height:110px;
+      padding:14px;
+      min-height:auto;
       display:flex;
       flex-direction:column;
-      justify-content:space-between;
+      gap:8px;
     }
 
     /* dashboard */
@@ -145,24 +149,24 @@
   </div>
 </section>
 
-<!-- DASHBOARDS -->
+<!-- FEEDBACK -->
+<section class="reveal">
+  <div class="grid-3" id="reviews">
+    <div class="glass card"><strong>Анна</strong><p>Помог структурировать бизнес и вырасти за 3 месяца</p></div>
+    <div class="glass card"><strong>Игорь</strong><p>Появилось понимание цифр и точек роста</p></div>
+    <div class="glass card"><strong>Мария</strong><p>Команда стала управляемой и предсказуемой</p></div>
+    <div<!-- PRICES -->
 <section class="reveal">
   <div class="grid-2">
-    <div class="glass card">
-      <h3>Рост выручки</h3>
-      <div class="chart" data-delay="0"></div>
-    </div>
-    <div class="glass card">
-      <h3>Эффективность</h3>
-      <div class="chart" data-delay="300"></div>
-    </div>
+    <div class="glass card"><h3>Старт</h3><div class="price">₽25k</div><p>Диагностика · план роста</p></div>
+    <div class="glass card"><h3>Рост</h3><div class="price">₽60k</div><p>2 месяца · KPI · команда</p></div>
+    <div class="glass card"><h3>Про</h3><div class="price">₽90k</div><p>Стратегия · метрики</p></div>
+    <div class="glass card"><h3>Ментор</h3><div class="price">₽120k</div><p>Лично · еженедельно</p></div>
   </div>
 </section>
 
-<!-- PRICES -->
-<section class="reveal">
-  <div class="grid-4">
-    <div class="glass card"><h3>Старт</h3><div class="price">₽25k</div><p>Диагностика · план роста</p></div>
+<!-- CONTACTS -->h3>Ментор</h3><div class="price">₽120k</div><p>Лично · еженедельно</p></div>
+  </div><p>Диагностика · план роста</p></div>
     <div class="glass card"><h3>Рост</h3><div class="price">₽60k</div><p>2 месяца · KPI · команда</p></div>
     <div class="glass card"><h3>Про</h3><div class="price">₽90k</div><p>Стратегия · метрики</p></div>
     <div class="glass card"><h3>Ментор</h3><div class="price">₽120k</div><p>Лично · еженедельно</p></div>
@@ -171,13 +175,13 @@
 
 <!-- CONTACTS -->
 <section class="reveal">
-  <div class="glass card">
+  <div class="glass card" style="align-items:center; gap:12px">
+    <h3>Как со мной связаться</h3>
     <div class="grid-4">
-      <a class="glass card" href="#">📸</a>
-      <a class="glass card" href="#">✈️</a>
-      <a class="glass card" href="#">📞</a>
-      <a class="glass card" href="#">✉️</a>
-      <a class="glass card" href="#">🌐</a>
+      <a class="glass card" style="aspect-ratio:1/1; align-items:center; justify-content:center" href="#">📸</a>
+      <a class="glass card" style="aspect-ratio:1/1; align-items:center; justify-content:center" href="#">✈️</a>
+      <a class="glass card" style="aspect-ratio:1/1; align-items:center; justify-content:center" href="#">📞</a>
+      <a class="glass card" style="aspect-ratio:1/1; align-items:center; justify-content:center" href="#">✉️</a>
     </div>
   </div>
 </section>
