@@ -19,37 +19,38 @@
     *{box-sizing:border-box}
 body {
   margin: 0;
-  font-family: -apple-system,BlinkMacSystemFont,Inter,system-ui,sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Inter, system-ui, sans-serif;
   color: var(--text);
   overflow-x: hidden;
 
-  /* базовый фон с твоими цветами */
-  background:
-    radial-gradient(circle at 10% 10%, var(--bg1) 30%, transparent 70%),
-    radial-gradient(circle at 90% 20%, var(--bg2) 30%, transparent 70%),
-    radial-gradient(circle at 50% 90%, var(--bg3) 30%, transparent 70%),
-    #0b0b10;
+  /* многоцветный градиент */
+  background: linear-gradient(
+    45deg,
+    var(--bg1),
+    var(--bg2),
+    var(--bg3),
+    #0b0b10
+  );
 
-  background-size: 200% 200%;
-  animation: bgMove 40s ease-in-out infinite;
+  background-size: 300% 300%;
+  animation: animatedGradient 25s ease infinite;
 }
 
-/* анимация движения градиентов */
-@keyframes bgMove {
+@keyframes animatedGradient {
   0% {
-    background-position: 5% 10%, 95% 15%, 50% 90%, 0 0;
+    background-position: 0% 50%;
   }
   25% {
-    background-position: 15% 20%, 90% 25%, 55% 80%, 0 0;
+    background-position: 50% 25%;
   }
   50% {
-    background-position: 10% 5%, 85% 30%, 45% 95%, 0 0;
+    background-position: 100% 50%;
   }
   75% {
-    background-position: 20% 15%, 92% 18%, 50% 85%, 0 0;
+    background-position: 50% 75%;
   }
   100% {
-    background-position: 5% 10%, 95% 15%, 50% 90%, 0 0;
+    background-position: 0% 50%;
   }
 }
 
