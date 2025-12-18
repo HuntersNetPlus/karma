@@ -122,67 +122,80 @@
 </head>
 <body>
 
+<!-- ABOUT -->
 <section class="about reveal">
-  <div class="glass card">
-    <img src="https://via.placeholder.com/600x400" alt="Фото">
-    <h2>Алексей Иванов</h2>
-    <p class="muted">Бизнес-тренер · рост, стратегия, управление</p>
-    <p>Помогаю предпринимателям наводить порядок в бизнесе и расти системно.</p>
+  <div class="grid-2">
+    <div class="glass card">
+      <h2>Алексей Иванов</h2>
+      <p class="muted">Бизнес-тренер · рост, стратегия, управление</p>
+      <p>Помогаю предпринимателям наводить порядок в бизнесе и расти системно.</p>
+    </div>
+    <div class="glass card">
+      <img src="https://via.placeholder.com/600x400" alt="Фото">
+    </div>
   </div>
 </section>
 
+<!-- PROBLEMS -->
 <section class="reveal">
   <div class="grid-3">
-    <div class="glass card"><h3>Хаос в процессах</h3><p>Структура и регламенты</p></div>
-    <div class="glass card"><h3>Нет роста</h3><p>Точки масштабирования</p></div>
+    <div class="glass card"><h3>Хаос в процессах</h3><p>Наводим структуру</p></div>
+    <div class="glass card"><h3>Нет роста</h3><p>Находим точки масштабирования</p></div>
     <div class="glass card"><h3>Слабая команда</h3><p>Управление и KPI</p></div>
   </div>
 </section>
 
+<!-- DASHBOARDS -->
 <section class="reveal">
   <div class="grid-2">
     <div class="glass card">
       <h3>Рост выручки</h3>
-      <div class="chart"></div>
+      <div class="chart" data-delay="0"></div>
     </div>
     <div class="glass card">
       <h3>Эффективность</h3>
-      <div class="chart"></div>
+      <div class="chart" data-delay="300"></div>
     </div>
   </div>
 </section>
 
+<!-- PRICES -->
 <section class="reveal">
   <div class="grid-4">
-    <div class="glass card"><h3>Старт</h3><div class="price">₽25k</div></div>
-    <div class="glass card"><h3>Рост</h3><div class="price">₽60k</div></div>
-    <div class="glass card"><h3>Про</h3><div class="price">₽90k</div></div>
-    <div class="glass card"><h3>Ментор</h3><div class="price">₽120k</div></div>
+    <div class="glass card"><h3>Старт</h3><div class="price">₽25k</div><p>Диагностика · план роста</p></div>
+    <div class="glass card"><h3>Рост</h3><div class="price">₽60k</div><p>2 месяца · KPI · команда</p></div>
+    <div class="glass card"><h3>Про</h3><div class="price">₽90k</div><p>Стратегия · метрики</p></div>
+    <div class="glass card"><h3>Ментор</h3><div class="price">₽120k</div><p>Лично · еженедельно</p></div>
   </div>
 </section>
 
+<!-- CONTACTS -->
 <section class="reveal">
-  <div class="glass card contacts">
-    <h3>Контакты</h3>
-    <p>Instagram · @trainer</p>
-    <p>Telegram · @trainer</p>
-    <p>Телефон · +7 900 000 00 00</p>
-    <p>Email · info@mail.ru</p>
+  <div class="glass card">
+    <div class="grid-4">
+      <a class="glass card" href="#">📸</a>
+      <a class="glass card" href="#">✈️</a>
+      <a class="glass card" href="#">📞</a>
+      <a class="glass card" href="#">✉️</a>
+      <a class="glass card" href="#">🌐</a>
+    </div>
   </div>
 </section>
 
 <script>
   const items=document.querySelectorAll('.reveal');
-  const charts=document.querySelectorAll('.chart');
-  const io=new IntersectionObserver(e=>{
-    e.forEach(x=>{
-      if(x.isIntersecting){
-        x.target.classList.add('show');
-        x.target.querySelectorAll('.chart').forEach(c=>c.classList.add('animate'));
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('show');
+        entry.target.querySelectorAll('.chart').forEach(chart=>{
+          const delay=chart.dataset.delay||0;
+          setTimeout(()=>chart.classList.add('animate'),delay);
+        });
       }
-    })
-  },{threshold:.3});
-  items.forEach(i=>io.observe(i));
+    });
+  },{threshold:0.4});
+  items.forEach(el=>io.observe(el));
 </script>
 
 </body>
